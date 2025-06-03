@@ -1,8 +1,11 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const path = usePathname();
   return (
     <header>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -27,14 +30,22 @@ const Header = () => {
               <li>
                 <Link
                   href='/meals'
-                  className='text-[#ff8a05] hover:text-[#f9b331] font-bold transition-colors duration-200'>
+                  className={` font-bold transition-colors duration-200 ${
+                    path === '/meals'
+                      ? 'text-[#f9572a]'
+                      : 'text-[#ff8a05] hover:text-[#f9b331]'
+                  }`}>
                   Browse Meals
                 </Link>
               </li>
               <li>
                 <Link
                   href='/community'
-                  className='text-[#ff8a05] hover:text-[#f9b331] font-bold transition-colors duration-200'>
+                  className={` font-bold transition-colors duration-200 ${
+                    path === '/community'
+                      ? 'text-[#f9572a]'
+                      : 'text-[#ff8a05] hover:text-[#f9b331]'
+                  }`}>
                   Foodies Community
                 </Link>
               </li>
